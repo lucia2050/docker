@@ -3,15 +3,15 @@ pipeline {
 
     stages {
         stage('Checkout') {
-            steps {
+           steps {
                 script {
                     checkout(
                         scm: [
                             $class: 'GitSCM', 
                             branches: [[name: '*/main']],
                             userRemoteConfigs: [[
-                                credentialsId: 'SHA256:UKj2o0sGtsd72U18r1ueQseioKLcixSvhkSc2S3xhV4',
-                                url: 'git@github.com:lucia2050/docker.git'
+                                credentialsId: 'yy28', 
+                                url: 'https://github.com/lucia2050/docker.git'
                             ]]
                         ]
                     )
