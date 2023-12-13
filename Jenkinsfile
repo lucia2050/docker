@@ -37,6 +37,10 @@ pipeline {
     }
 
     post {
+        success {
+            // Do nothing for now
+        }
+    }
        
     }
 }
