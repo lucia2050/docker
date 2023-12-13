@@ -30,7 +30,7 @@ pipeline {
                     sh 'docker-compose up -d'
 
                     // Run unit tests using WSL and nohup.sh
-                    sh 'python -m unittest -v test.py'
+                    sh 'docker-compose exec vgg python -m unittest -v test.py'
                 }
             }
         }
