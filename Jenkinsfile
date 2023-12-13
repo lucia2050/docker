@@ -38,7 +38,7 @@ pipeline {
 
     post {
         success {
-            // Do nothing for now
+           echo 'Build and test successful!'
         }
     }
        
