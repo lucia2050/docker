@@ -20,12 +20,12 @@ class TestPredictions(unittest.TestCase):
 
     def test_vgg_predictions(self):
         wav_files = ['disco.00004.wav']  # Add more files if necessary
-        for wav_file in wav_files:
-            file_path = f'/app/test_data/{wav_file}'
+        for wav_file_f in wav_files:
+            file_path = f'/app/test_data/{wav_file_f}'
             with open(file_path, 'rb') as wav_file:
                 vgg_response = requests.post(vgg_url, files={'audio': wav_file})
             vgg_prediction = vgg_response.json()['prediction'] if vgg_response.ok else 'Error predicting with VGG'
-            label = self.extract_label(wav_file)
+            label = self.extract_label(wav_file_f)
             self.assertIn(label, vgg_prediction)
            
 
