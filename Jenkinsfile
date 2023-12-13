@@ -18,7 +18,7 @@ pipeline {
                 }
             }
         }
-        }
+        
 
         stage('Build and Test') {
             steps {
@@ -49,3 +49,4 @@ pipeline {
         }
     }
 
+}
