@@ -26,11 +26,11 @@ pipeline {
                     // Build Docker images
                     sh 'docker-compose build'
 
-                    // Run Docker containers
-                    sh 'docker-compose up -d'
+                    // Run Docker containers using WSL
+                    sh 'wsl docker-compose up -d'
 
-                    // Run unit tests
-                    sh 'python -m unittest -v test.py'
+                    // Run unit tests using WSL
+                    sh 'wsl python -m unittest -v test.py'
                 }
             }
         }
@@ -38,11 +38,11 @@ pipeline {
 
     post {
         always {
-            // Cleanup: Stop and remove Docker containers
+            // Cleanup: Stop and remove Docker containers using WSL
             script {
                 // Change to the 'Music/app' directory
                 dir('Music/app') {
-                    sh 'docker-compose down'
+                    sh 'wsl docker-compose down'
                 }
             }
         }
