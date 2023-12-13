@@ -1,22 +1,23 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>WAV File Predictor</title>
+    <title>Music Genre Classification</title>
     <style>
         body {
-            background-color: #afeeee; /* Light Blue Turquoise background */
+            background: url('im.jpg') no-repeat center center fixed; /* Utiliser la propriété background */
+            background-size: 100% 100%;
             font-family: Arial, sans-serif;
             text-align: center;
         }
 
         h1 {
-            color: #008080; /* Teal color for the title */
+            color: #db7f3d; /* Teal color for the title */
         }
 
         form {
             margin: 20px auto;
             padding: 20px;
-            border: 1px solid #008080;
+            border: 1px solid #db7f3d;
             border-radius: 10px;
             background-color: #ffffff; /* White background for the form */
             display: inline-block;
@@ -25,7 +26,7 @@
         input[type="file"] {
             padding: 10px;
             margin: 10px;
-            border: 1px solid #008080;
+            border: 1px solid #db7f3d;
             border-radius: 5px;
             background-color: #f0f8ff; /* Alice Blue background for the file input */
         }
@@ -34,7 +35,7 @@
             padding: 10px 20px;
             border: none;
             border-radius: 5px;
-            background-color: #008080;
+            background-color: #db7f3d;
             color: #ffffff;
             cursor: pointer;
         }
@@ -42,14 +43,14 @@
         div {
             margin: 20px auto;
             padding: 20px;
-            border: 1px solid #008080;
+            border: 1px solid #db7f3d;
             border-radius: 10px;
             background-color: #ffffff; /* White background for the result div */
             display: inline-block;
         }
 
         strong {
-            color: #008080; /* Teal color for the strong element */
+            color: #db7f3d; /* Teal color for the strong element */
         }
 
         p {
@@ -58,19 +59,20 @@
     </style>
 </head>
 <body>
-    <h1>WAV File Predictor</h1>
+    <h1>Music Genre Classification</h1>
     <form action="/predict" method="post" enctype="multipart/form-data">
         <input type="file" name="file">
         <br>
         <input type="submit" value="Predict">
     </form>
     <br>
-    {% if wav_data %}
+    
+    
         <div>
             <strong>Uploaded WAV File (Base64):</strong>
             <p>{{ wav_data }}</p>
         </div>
-    {% endif %}
+
     <br>
     <div>
         <strong>Prediction Results:</strong>
