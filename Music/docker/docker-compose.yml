@@ -1,0 +1,42 @@
+version: '3'
+
+services:
+  front:
+    build:
+      context: .
+      dockerfile: Dockerfile_front
+    ports:
+      - "5000"  # Mapping du port 5000 au hasard sur l'hôte
+    volumes:
+      - ./models:/app/models
+    depends_on:
+      - svm
+      - vgg
+    networks:
+      - ml_network
+
+  svm:
+    build:
+      context: .
+      dockerfile: Dockerfile_svm
+    ports:
+      - "5001"  # Mapping du port 5001 au hasard sur l'hôte
+    volumes:
+      - ./models:/app/models
+    networks:
+      - ml_network
+
+  vgg:
+    build:
+      context: .
+      dockerfile: Dockerfile_vgg
+    ports:
+      - "5002"  # Mapping du port 5002 au hasard sur l'hôte
+    volumes:
+      - ./models:/app/models
+    networks:
+      - ml_network
+
+networks:
+  ml_network:
+    driver: bridge

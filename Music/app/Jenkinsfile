@@ -1,0 +1,43 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Build') {
+            steps {
+                script {
+                    // Build Docker images
+                    sh 'docker-compose build'
+                }
+            }
+        }
+
+        stage('Run') {
+            steps {
+                script {
+                    // Run Docker containers
+                    sh 'docker-compose up -d'
+                }
+            }
+        }
+
+        stage('Test') {
+            steps {
+                script {
+                    // Run unit tests
+                    sh 'python -m unittest -v test.py'
+                }
+            }
+        }
+
+        
+    }
+
+    post {
+        always {
+            // Cleanup: Stop and remove Docker containers
+            script {
+                sh 'docker-compose down'
+            }
+        }
+    }
+}

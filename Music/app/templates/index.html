@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>WAV File Predictor</title>
+    <style>
+        body {
+            background-color: #afeeee; /* Light Blue Turquoise background */
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        h1 {
+            color: #008080; /* Teal color for the title */
+        }
+
+        form {
+            margin: 20px auto;
+            padding: 20px;
+            border: 1px solid #008080;
+            border-radius: 10px;
+            background-color: #ffffff; /* White background for the form */
+            display: inline-block;
+        }
+
+        input[type="file"] {
+            padding: 10px;
+            margin: 10px;
+            border: 1px solid #008080;
+            border-radius: 5px;
+            background-color: #f0f8ff; /* Alice Blue background for the file input */
+        }
+
+        input[type="submit"] {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #008080;
+            color: #ffffff;
+            cursor: pointer;
+        }
+
+        div {
+            margin: 20px auto;
+            padding: 20px;
+            border: 1px solid #008080;
+            border-radius: 10px;
+            background-color: #ffffff; /* White background for the result div */
+            display: inline-block;
+        }
+
+        strong {
+            color: #008080; /* Teal color for the strong element */
+        }
+
+        p {
+            color: #333; /* Dark Gray color for the paragraph text */
+        }
+    </style>
+</head>
+<body>
+    <h1>WAV File Predictor</h1>
+    <form action="/predict" method="post" enctype="multipart/form-data">
+        <input type="file" name="file">
+        <br>
+        <input type="submit" value="Predict">
+    </form>
+    <br>
+    {% if wav_data %}
+        <div>
+            <strong>Uploaded WAV File (Base64):</strong>
+            <p>{{ wav_data }}</p>
+        </div>
+    {% endif %}
+    <br>
+    <div>
+        <strong>Prediction Results:</strong>
+        <p>SVM Prediction: {{ svm_prediction }}</p>
+        <p>VGG Prediction: {{ vgg_prediction }}</p>
+    </div>
+    <br>
+</body>
+</html>
