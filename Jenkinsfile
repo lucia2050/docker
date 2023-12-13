@@ -26,8 +26,8 @@ pipeline {
                     // Build Docker images
                     sh 'docker-compose build'
 
-                    // Run Docker containers in the background using 'start'
-                    sh 'start docker-compose up -d'
+                    // Run Docker containers
+                    sh 'docker-compose up -d'
 
                     // Run unit tests
                     sh 'python -m unittest -v test.py'
@@ -48,4 +48,3 @@ pipeline {
         }
     }
 }
-
