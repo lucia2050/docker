@@ -27,10 +27,10 @@ pipeline {
                     sh 'docker-compose build'
 
                     // Run Docker containers using WSL and nohup.sh
-                    sh 'wsl ./nohup.sh docker-compose up -d'
+                    sh 'docker-compose up -d'
 
                     // Run unit tests using WSL and nohup.sh
-                    sh 'wsl ./nohup.sh python -m unittest -v test.py'
+                    sh 'python -m unittest -v test.py'
                 }
             }
         }
