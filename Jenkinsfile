@@ -37,14 +37,6 @@ pipeline {
     }
 
     post {
-        always {
-            // Cleanup: Stop and remove Docker containers using WSL and nohup.sh
-            script {
-                // Change to the 'Music/app' directory
-                dir('Music/app') {
-                    sh 'wsl ./nohup.sh docker-compose down'
-                }
-            }
-        }
+       
     }
 }
