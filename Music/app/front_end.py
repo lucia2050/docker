@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request
+from flask import send_from_directory
 import os
 from werkzeug.utils import secure_filename
 import base64
@@ -22,6 +23,10 @@ vgg_url = 'http://vgg:5000/predict_vgg'
 
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+
+@app.route('/templates/<path:filename>')
+def serve_static(filename):
+    return send_from_directory('templates', filename)
 
 @app.route('/')
 def index():
